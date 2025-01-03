@@ -1,0 +1,220 @@
+﻿<Window x:Class="SSCEOfflineRegSchApp.Pages.wPassportPage"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        xmlns:wf="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms"
+        xmlns:nb="clr-namespace:Neurotec.Biometrics.Gui;assembly=Neurotec.Biometrics.Gui"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SSCEOfflineRegSchApp.Pages"
+        WindowStyle="None"
+        
+        WindowStartupLocation="CenterScreen"
+        Loaded="Window_Loaded"
+        Height="450" 
+        Width="640">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/SSCEOfflineRegSchApp;component/Resources/ButtonStyle.xaml" />
+                <ResourceDictionary Source="/SSCEOfflineRegSchApp;component/Resources/FancyCheckBoxStyle.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+    <Grid Background="#01DFA5">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="60"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <xctk:WatermarkComboBox x:Name="cbCameras" 
+                                    Watermark="Select Device" 
+                                    DropDownClosed="cbCameras_DropDownClosed"
+                                    Margin="221,9,79.333,6" 
+                                    FontSize="13"/>
+        </Grid>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0"
+                  Margin="5">
+                <CheckBox x:Name="chkCaptureAutomatically"  
+                          Content="Capture Automatically"
+                          Style="{StaticResource FancyCheckBox}"
+                          IsChecked="False" 
+                          Foreground="#FF272727"
+                          HorizontalContentAlignment="Left"  
+                          Checked="chkCaptureAutomatically_Checked"  
+                          Unchecked="chkCaptureAutomatically_Unchecked"  
+                          HorizontalAlignment="Left" 
+                          Height="30" 
+                          Margin="5,17,0,289.333" Width="167"/>
+                <Label Name="lblStatus" 
+                       Foreground="Red"
+                       FontSize="8"
+                       Margin="10,76,10,227.333"/>
+                <Label Name="lblQuality"
+                       FontSize="8"
+                       Foreground="Red"
+                       Margin="10,111,10,192.333"/>
+                <CheckBox x:Name="chkCheckLiveness"  
+                    Content="Check liveness"
+                    Style="{StaticResource FancyCheckBox}"
+                    IsChecked="False" 
+                    Foreground="#FF272727"
+                    HorizontalContentAlignment="Left"  
+                    Checked="chkCheckLiveness_Checked"  
+                    Unchecked="chkCheckLiveness_Unchecked"  
+                    HorizontalAlignment="Left" 
+                    Height="30" 
+                    Margin="5,45,0,261.333" Width="167"/>
+
+                <Border Name="brdSiteLogo" 
+                    BorderThickness="2"
+                    BorderBrush="#3C3B3B"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center"
+                    Background="#fff"
+                    Height="103" 
+                    Width="113" Margin="2,127,75,3.333">
+
+                    <Image Name="PassportBox"    
+                       HorizontalAlignment="Stretch" 
+                       VerticalAlignment="Stretch" 
+                       Stretch="Fill"/>
+
+
+                </Border>
+            </Grid>
+            <Grid Grid.Column="1"
+                  Margin="5"
+                  x:Name="CamImageGrid">
+                <!--<Border Name="brdSiteLogo" 
+                    BorderThickness="2"
+                    BorderBrush="#3C3B3B"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center"
+                    
+                    Background="#fff"
+                    Height="178" 
+                    Width="185">-->
+
+                <!-- <Image Name="CamImageBox"    
+                       HorizontalAlignment="Stretch" 
+                       VerticalAlignment="Stretch" 
+                       Stretch="Fill"/>-->
+
+
+                <!--</Border>-->
+                <WindowsFormsHost x:Name="wfh"
+                                  HorizontalAlignment="Stretch"
+                                  VerticalAlignment="Stretch"
+                                  Visibility="Visible"
+                                  Margin="4,10,4.333,10.333"
+                                  Background="#fff">
+                    <nb:NFaceView x:Name="CamImageBox"
+                                  
+                                  LivenessItemsColor="Yellow"
+                                  BaseFeaturePointSize="2"
+                                  BackgroundImageLayout="Tile"
+                                  CausesValidation="True"
+                                  FaceRectangleColor="Green"
+                                  FaceRectangleWidth="2"
+                                  FeaturePointSize="4"
+                                  IcaoArrowsColor="Red"
+                                  Margin="4,5,4,5"
+                                  ShowEmotions="True"
+                                  ShowAge="True"
+                                  ShowEmotionsConfidence="False"
+                                  ShowBaseFeaturePoints="True"
+                                  ShowExpression="True"
+                                  ShowExpressionConfidence="False"
+                                  ShowEyes="True"
+                                  ShowEyesConfidence="False"
+                                  ShowFaceConfidence="True"
+                                  ShowFaceQuality="True"
+                                  ShowFaceRectangle="True"
+                                  ShowGender="True"
+                                  ShowGenderConfidence="False"
+                                  ShowIcaoArrows="True"
+                                  ShowMouth="True"
+                                  ShowMouthConfidence="True"
+                                  ShowNose="True"
+                                  ShowNoseConfidence="False"
+                                  ShowProperties="True"
+                                  ShowPropertiesConfidence="False"
+                                  ShowTokenImageRectangle="True"
+                                  TokenImageRectangleColor="White"/>
+
+                </WindowsFormsHost>
+            </Grid>
+
+        </Grid>
+        <Grid Grid.Row="2"  Margin="0,0,0,0" >
+            <StackPanel Orientation="Horizontal" 
+                        HorizontalAlignment="Right" 
+                        Margin="0,0,5,0">
+                <Button Name="btnStartCam" 
+                        Content="Start Cam" 
+                        Margin="3,2"
+                        MinWidth="50" 
+                        Height="34"  
+                        Click="btnStartCam_Click"  
+                        FontSize="13" 
+                        Style="{StaticResource ROButtonStyle}"     
+                        VerticalAlignment="Center" 
+                        HorizontalAlignment="Stretch"  
+                        VerticalContentAlignment="Center" 
+                        HorizontalContentAlignment="Center" 
+                        Width="Auto" />
+
+
+                <Button Name="btnCapture" 
+                        Content="Capture" 
+                        Margin="3,2"
+                        MinWidth="50" 
+                        Height="34"  
+                        Click="btnCapture_Click"  
+                        FontSize="13" 
+                        Style="{StaticResource ROButtonStyle}"     
+                        VerticalAlignment="Center" 
+                        HorizontalAlignment="Stretch"  
+                        VerticalContentAlignment="Center" 
+                        HorizontalContentAlignment="Center" 
+                        Width="Auto" />
+
+                <Button Name="btnAccept" 
+                        Content="Accept" 
+                        Margin="3,2"
+                        MinWidth="50" 
+                        Height="34"  
+                        Click="btnAccept_Click"  
+                        FontSize="13" 
+                        Style="{StaticResource ROButtonStyle}"     
+                        VerticalAlignment="Center" 
+                        HorizontalAlignment="Stretch"  
+                        VerticalContentAlignment="Center" 
+                        HorizontalContentAlignment="Center" 
+                        Width="Auto" />
+
+                <Button Name="btnClose" 
+                        Content="Close"
+                        Margin="3,2"
+                        MinWidth="50" 
+                        Height="34"  
+                        Click="btnClose_Click"  
+                        FontSize="13" 
+                        Style="{StaticResource RCButtonStyle}"     
+                        VerticalAlignment="Center" 
+                        HorizontalAlignment="Stretch"  
+                        VerticalContentAlignment="Center" 
+                        HorizontalContentAlignment="Center" 
+                        Width="Auto" />
+
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>

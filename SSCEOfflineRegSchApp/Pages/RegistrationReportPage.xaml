@@ -1,0 +1,76 @@
+﻿<UserControl x:Class="SSCEOfflineRegSchApp.Pages.RegistrationReportPage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:my="clr-namespace:SAPBusinessObjects.WPF.Viewer;assembly=SAPBusinessObjects.WPF.Viewer"
+             xmlns:local="clr-namespace:SSCEOfflineRegSchApp.Pages"
+             Loaded="UserControl_Loaded"
+             Height="590" 
+             Width="950">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/SSCEOfflineRegSchApp;component/Resources/ButtonStyle.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.Background>
+            <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                <GradientStop Color="#088A4B" Offset="0" />
+                <GradientStop Color="#088A4B" Offset="1" />
+            </LinearGradientBrush>
+        </Grid.Background>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        
+        <!--Page Content Section -->
+        <Grid Grid.Row="0" Margin="5">
+            <my:CrystalReportsViewer  Name="crv"    
+                                      ShowLogo="False"
+                                      ToggleSidePanel="None"
+                                      ShowStatusbar="False"
+                                      VerticalAlignment="Stretch" 
+                                      HorizontalAlignment="Stretch"  />
+        </Grid>
+        
+        <!--Buttons Section -->
+        <Grid Grid.Row="1"   
+              Margin="0,0,5,0" 
+              Background="#088A4B">
+            <StackPanel Orientation="Horizontal" 
+                        HorizontalAlignment="Right">
+                <Button x:Name="btnRefresh" 
+                        Content="Refresh" 
+                        Margin="3,0,3,8" 
+                        MinWidth="50" 
+                        Height="42"  
+                        Click="btnRefresh_Click"  
+                        FontSize="18" 
+                        Style="{StaticResource AButtonStyle}"     
+                        VerticalAlignment="Center" 
+                        HorizontalAlignment="Stretch"  
+                        VerticalContentAlignment="Center" 
+                        HorizontalContentAlignment="Center" 
+                        Width="150" />
+
+                <Button x:Name="btnClose" 
+                        Content="Close" 
+                        Margin="3,0,3,8" 
+                        MinWidth="50" 
+                        Height="42"  
+                        Click="btnClose_Click"  
+                        FontSize="18" 
+                        Style="{StaticResource RButtonStyle}"     
+                        VerticalAlignment="Center" 
+                        HorizontalAlignment="Stretch"  
+                        VerticalContentAlignment="Center" 
+                        HorizontalContentAlignment="Center" 
+                        Width="150" />
+            </StackPanel>
+        </Grid>
+    </Grid>
+</UserControl>

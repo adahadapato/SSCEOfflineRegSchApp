@@ -1,0 +1,206 @@
+﻿<Window x:Class="SSCEOfflineRegSchApp.Pages.BiometricsPage"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SSCEOfflineRegSchApp.Pages"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        Background="Transparent"
+        AllowsTransparency="True"
+        Loaded="Window_Loaded"
+        Height="400" Width="600">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/SSCEOfflineRegSchApp;component/Resources/ButtonStyle.xaml" />
+                <ResourceDictionary Source="/SSCEOfflineRegSchApp;component/Resources/ToolTipStyle.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+    <Grid Background="#01DFA5">
+        <Grid.Effect>
+            <DropShadowEffect ShadowDepth="2"/>
+        </Grid.Effect>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="60"/>
+        </Grid.RowDefinitions>
+        <Grid Margin="2" Grid.Row="0">
+            <Rectangle Stroke="#fff"
+                       Fill="#fff" 
+                       Margin="10,66,9,10"/>
+
+            <TextBlock x:Name="lblSerialNUber" 
+                       Text="9999" 
+                       Foreground="#ffffff" 
+                       Background="#088A4B"
+                       HorizontalAlignment="Stretch"
+                       TextAlignment="Center"
+                       FontSize="18" 
+                       Padding="2"
+                       Margin="15,19,498,282"/>
+
+            <TextBlock x:Name="lblCand_name" 
+                       Text="Candidate Name" 
+                       Foreground="#ffffff" 
+                       Background="#088A4B"
+                       HorizontalAlignment="Stretch"
+                       TextAlignment="Center"
+                       FontSize="18" 
+                       Padding="2"
+                       Margin="116,19,10,282"/>
+
+            <Image x:Name="imgFingerState"  
+                   Margin="568,66,10,252"   
+                   HorizontalAlignment="Stretch" 
+                   VerticalAlignment="Stretch" 
+                   Source="/Images/Biometrics/off.png"
+                   Width="18"
+                   Height="18"
+                   Stretch="Fill" />
+
+            <!-- A separator between settings and buttons. -->
+            <Line StrokeThickness="1" 
+                  SnapsToDevicePixels="True"
+                  Stroke="#3C3B3B"
+                  Stretch="Fill"
+                  X1="0" 
+                  Y1="100" 
+                  X2="100" 
+                  Y2="100" Margin="0,-111,0,111" />
+
+            <Image x:Name="imgRightHand" 
+                       Margin="308,66,9,13"   
+                       HorizontalAlignment="Stretch" 
+                       VerticalAlignment="Stretch" 
+                       Source="/Images/Biometrics/Right_hand.png"
+                       Stretch="Fill"/>
+            <Image x:Name="imgLeftHand"  
+                       Margin="8,66,309,13"   
+                       HorizontalAlignment="Stretch" 
+                       VerticalAlignment="Stretch" 
+                       Source="/Images/Biometrics/Left_hand.png"
+                       Stretch="Fill" />
+
+            <Image Source="/SSCEOfflineRegSchApp;component/Images/idc.png"  
+                   Height="25" 
+                   Stretch="Fill"
+                   VerticalAlignment="Bottom" 
+                   HorizontalAlignment="Left" Margin="14,0,0,-10" Width="60" />
+
+            <Image x:Name="Tick"  
+                   Margin="252,300,244,18"   
+                   HorizontalAlignment="Stretch" 
+                   VerticalAlignment="Stretch" 
+                   Source="/Images/Biometrics/Tick4.png"
+                   Width="100"
+                   Height="18"
+                   Stretch="Fill" />
+
+            <TextBlock x:Name="lblLectf" 
+                       Text="Left Hand" 
+                       Foreground="#3C3B3B"
+                       HorizontalAlignment="Stretch"
+                       TextAlignment="Center"
+                       FontSize="18" 
+                       FontWeight="Bold"
+                       Padding="2"
+                       Margin="100,240,394,68"/>
+
+            <TextBlock x:Name="lblRight" 
+                       Text="Right Hand" 
+                       Foreground="#3C3B3B"
+                       HorizontalAlignment="Stretch"
+                       TextAlignment="Center"
+                       FontSize="18" 
+                       FontWeight="Bold"
+                       Padding="2"
+                       Margin="394,240,100,68"/>
+        </Grid>
+        <Grid Grid.Row="1"   Margin="2">
+
+           
+
+            <StackPanel Orientation="Horizontal" 
+                        HorizontalAlignment="Center">
+                <Button Name="btnCapture" 
+                        Content="Start Capture" 
+                        Margin="3,8,3,14" 
+                        Width="110"
+                        Height="34"  
+                        FontSize="13" 
+                        Style="{StaticResource ROButtonStyle}"     
+                        VerticalAlignment="Center" 
+                        HorizontalAlignment="Stretch"  
+                        VerticalContentAlignment="Center" 
+                        HorizontalContentAlignment="Center" 
+                        Click="btnCapture_Click">
+                    <Button.ToolTip>
+                        <ToolTip Style="{StaticResource FancyToolTip}">
+                            Capture Finger Prints
+                        </ToolTip>
+                    </Button.ToolTip>
+                </Button>
+
+                <Button Name="btnResetCapture" 
+                        Content="Reset" 
+                        Margin="3,8,3,14" 
+                        Width="93"
+                        Height="34"  
+                        FontSize="13" 
+                        Style="{StaticResource ROButtonStyle}"     
+                        VerticalAlignment="Center" 
+                        HorizontalAlignment="Stretch"  
+                        VerticalContentAlignment="Center" 
+                        HorizontalContentAlignment="Center"
+                        Click="btnResetCapture_Click">
+                    <Button.ToolTip>
+                        <ToolTip Style="{StaticResource FancyToolTip}">
+                            Reset Capture Process
+                        </ToolTip>
+                    </Button.ToolTip>
+                </Button>
+
+                <Button Name="btnSave" 
+                        Content="Save" 
+                        Margin="3,8,3,14" 
+                        Width="97"
+                        Height="34"  
+                        FontSize="13" 
+                        Style="{StaticResource ROButtonStyle}"     
+                        VerticalAlignment="Center" 
+                        HorizontalAlignment="Stretch"  
+                        VerticalContentAlignment="Center" 
+                        HorizontalContentAlignment="Center" 
+                        Click="btnSave_Click"  >
+                    <Button.ToolTip>
+                        <ToolTip Style="{StaticResource FancyToolTip}">
+                            Save Captured Biometrics information
+                        </ToolTip>
+                    </Button.ToolTip>
+                </Button>
+
+                <Button Name="btnClose" 
+                        Content="Close" 
+                        Margin="3,8,3,14" 
+                        Height="34"  
+                        Width="98"
+                        FontSize="13" 
+                        Style="{StaticResource RCButtonStyle}"     
+                        VerticalAlignment="Center" 
+                        HorizontalAlignment="Stretch"  
+                        VerticalContentAlignment="Center" 
+                        HorizontalContentAlignment="Center" 
+                        Click="btnClose_Click"  >
+                    <Button.ToolTip>
+                        <ToolTip Style="{StaticResource FancyToolTip}">
+                            Cancel the operation and close form
+                        </ToolTip>
+                    </Button.ToolTip>
+                </Button>
+            </StackPanel>
+           
+        </Grid>
+    </Grid>
+</Window>

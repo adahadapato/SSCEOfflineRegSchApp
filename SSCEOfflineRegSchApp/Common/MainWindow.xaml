@@ -1,0 +1,363 @@
+﻿<Window x:Class="SSCEOfflineRegSchApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:layoutToolkit="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Layout.Toolkit"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SSCEOfflineRegSchApp"
+        WindowStartupLocation="CenterScreen" 
+        Closing="Window_Closing"
+        Closed="Window_Closed"
+        Unloaded="Window_Unloaded"
+        WindowState="Maximized" 
+        WindowStyle="None" 
+        AllowsTransparency="True"
+        Loaded="MainWindow_Loaded">
+    <Window.Resources>
+        <ResourceDictionary>
+            <!-- <local:CaptionButtonRectToMarginConverter x:Key="CaptionButtonMarginConverter"/>-->
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/SSCEOfflineRegSchApp;component\Resources\ButtonStyle.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="40"/>
+        </Grid.RowDefinitions>
+        <!--provide the background for the entire form.  In practice, this appears as the window's resize border, because the title and window content obscure the rest-->
+        <Border CornerRadius="10,10,5,5" Grid.RowSpan="4" Grid.ColumnSpan="2" BorderThickness="3" BorderBrush="#3ADF00" Margin="0,11,-0.333,-0.667">
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                    <GradientStop Color="#3aDF00" Offset="0" />
+                    <GradientStop Color="#298A08" Offset="1" />
+                </LinearGradientBrush>
+            </Border.Background>
+        </Border>
+
+        <!--title bar-->
+        <Border CornerRadius="10,10,0,0" Grid.Column="0" BorderThickness="3,3,3,1" BorderBrush="#0A2A1B"  Grid.ColumnSpan="2" Margin="0,0">
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                    <GradientStop Color="#088A4B" Offset="0" />
+                    <GradientStop Color="#0A2A1B" Offset="1" />
+                </LinearGradientBrush>
+            </Border.Background>
+
+            <!--Window Icon and Title-->
+            <Grid Margin="5,3" 
+                  HorizontalAlignment="Left">
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/SSCEOfflineRegSchApp;component/Images/neco_logo.png" 
+                           Height="25" 
+                           Width="30"
+                           Margin="5,0,0,0"
+                           Stretch="Fill"/>
+                    <TextBlock Text="National Exminations Council (NECO)"
+                               Margin="5,0,0,0"
+                           VerticalAlignment="Bottom"
+                           FontSize="16"
+                           Foreground="#01DFA5"/>
+                </StackPanel>
+            </Grid>
+            
+        </Border>
+
+        <!--min/max/close buttons-->
+        <Grid Grid.Column="1">
+            <local:CaptionButtonsWithHelp />
+        </Grid>
+        
+        <!-- Top Panel -->
+        <Border  Grid.Column="1" Grid.Row="1" BorderThickness="1,4,3,1" Height="45" HorizontalAlignment="Stretch" VerticalAlignment="Top"
+                    BorderBrush="#0A2A1B" Margin="0,0,0,5" CornerRadius="0,0,0,0" Background="#088A4B" >
+            <Grid Margin="0,2" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Grid.Column="0">
+                          <TextBlock Margin="5,1,0,1" Name="txtDate" Text="" Width="auto" TextAlignment="Right" FontWeight="Bold" TextTrimming="CharacterEllipsis" 
+                          LineHeight="20" FontSize="12"  Foreground="#fff"/>
+
+                    <TextBlock Margin="10,1,0,1" Name="txtTime" Text="" TextAlignment="Right" FontWeight="Bold" TextTrimming="CharacterEllipsis" 
+                          LineHeight="20" FontSize="12" Width="auto"  Foreground="#fff"/>
+                </StackPanel>
+                
+                
+
+                <TextBlock Margin="5,1,10,0" Name="txtexam" Text="" 
+                           TextAlignment="Right" Grid.Column="1" Width="auto"
+                            FontWeight="Bold" TextTrimming="CharacterEllipsis" 
+                            LineHeight="16" FontSize="12" VerticalAlignment="Top" Foreground="#fff"/>
+
+                <TextBlock Margin="5,1,10,0" Name="txtSchoolInfo" Text="" 
+                           TextAlignment="Right" Grid.Column="1" Width="auto"
+                            FontWeight="Bold" TextTrimming="CharacterEllipsis" 
+                            LineHeight="16" FontSize="12" VerticalAlignment="Bottom" Foreground="#fff"/>
+            </Grid>
+            
+        </Border>
+            <!-- Left Panel [Menu Placeholder] -->
+        <Border  Grid.Column="0" 
+                 Grid.Row="1" 
+                 Grid.RowSpan="2" 
+                 BorderThickness="3,3,3,1" 
+                 CornerRadius="0,0,0,0"
+                 BorderBrush="#0A2A1B" 
+                 Margin="0,0" 
+                 Width="250" 
+                 Background="#088A4B" >
+            <Grid Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <Grid Width="240" 
+                      Margin="1,0" 
+                      VerticalAlignment="Stretch">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+                    <layoutToolkit:Accordion Background="#088A4B" BorderBrush="#088A4B" HorizontalAlignment="Stretch" 
+                                             Margin="0,10" Width="240" Grid.Row="0" >
+                        <layoutToolkit:AccordionItem Header="REGISTRATION" BorderBrush="#27ae60"
+                                                FontWeight="Bold" FontSize="16" Width="222" Margin="0,0" Background="#27ae60"  
+                                                 Cursor="Hand" >
+                            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                                <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch">
+                                    <Button Name="btnRegisterCandidate"  
+                                        ToolTip="Click to Register Candidates"  
+                                        Style="{StaticResource MButtonStyle}" 
+                                        Width="220" 
+                                        VerticalContentAlignment="Center"
+                                        HorizontalContentAlignment="Left" 
+                                        Click="btnRegisterCandidate_Click" 
+                                        Content="Register Candidates"/>
+
+                                    <Button Name="btnPreViewRegisteredCandidates"  
+                                        ToolTip="Click to Preview Registered Candidates"  
+                                        Style="{StaticResource MButtonStyle}" 
+                                        Width="220" 
+                                        VerticalContentAlignment="Center"
+                                        HorizontalContentAlignment="Left" 
+                                        Click="btnPreViewRegisteredCandidates_Click" 
+                                        Content="Preview Registration"/>
+
+                                    <Button Name="btnRegisterationReport"  
+                                            ToolTip="Click to View Registeration Report"  
+                                            Style="{StaticResource MButtonStyle}" 
+                                         Width="220" 
+                                            Click="btnRegisterationReport_Click"
+                                            VerticalContentAlignment="Center"
+                                            HorizontalContentAlignment="Left" 
+                                            Content="Registeration Report"/>
+
+
+
+                                    <Button Name="btnViewEntrySchedule"  
+                                        ToolTip="Click to View Entry Schedule Report"  
+                                        Style="{StaticResource MButtonStyle}" 
+                                        Width="220" VerticalContentAlignment="Center"
+                                        HorizontalContentAlignment="Left" 
+                                        Content="Entry Schedule" Click="btnViewEntrySchedule_Click"/>
+
+                                </StackPanel>
+                            </ScrollViewer>
+                        </layoutToolkit:AccordionItem>
+                        <layoutToolkit:AccordionItem Header="DATA SECTION" 
+                                                     BorderBrush="#27ae60"
+                                                     FontWeight="Bold" 
+                                                     FontSize="16" 
+                                                     Width="222" 
+                                                     Margin="0,0" 
+                                                     Background="#27ae60"  
+                                                     Cursor="Hand">
+                            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                                <StackPanel Orientation="Vertical" 
+                                            HorizontalAlignment="Stretch">
+
+                                    <Button Name="btnRestoreDatafromBackup"  
+                                            ToolTip="Click to Restore Registration Data from Backup"  
+                                            Style="{StaticResource MButtonStyle}" 
+                                            Width="220" 
+                                            Click="btnRestoreDatafromBackup_Click"
+                                            VerticalContentAlignment="Center"
+                                            HorizontalContentAlignment="Left"
+                                            Content="Restore Data"/>
+
+                                    <Button Name="btnBackupData"  
+                                            ToolTip="Click to Backup Registration Data"  
+                                            Style="{StaticResource MButtonStyle}" 
+                                            Width="220" 
+                                            Click="btnBackupData_Click"
+                                            VerticalContentAlignment="Center"
+                                            HorizontalContentAlignment="Left"
+                                            Content="Backup Data"/>
+
+                                    <Button Name="btnExportData"  
+                                            ToolTip="Click to Export Registration Data"  
+                                            Style="{StaticResource MButtonStyle}" 
+                                            Width="220" 
+                                            Click="btnExportData_Click"
+                                            VerticalContentAlignment="Center"
+                                            HorizontalContentAlignment="Left"
+                                            Content="Export Data"/>
+
+                                    <Button Name="btnPreviewExportedData"  
+                                            ToolTip="Click to Preview Exported Registration Data"  
+                                            Style="{StaticResource MButtonStyle}" 
+                                            Width="220" 
+                                            Click="btnPreviewExportedData_Click"
+                                            VerticalContentAlignment="Center"
+                                            HorizontalContentAlignment="Left"
+                                            Content="Preview Exported"/>
+                                </StackPanel>
+                            </ScrollViewer>
+                        </layoutToolkit:AccordionItem>
+                            <layoutToolkit:AccordionItem Header="BIOMETRICS" BorderBrush="#27ae60"
+                                                FontWeight="Bold" FontSize="16" Width="222" Margin="0,0" Background="#27ae60"  
+                                                 Cursor="Hand">
+                            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                                <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch">
+                                    <Button Name="btnEnrollFingers"  
+                                        ToolTip="Click to Enroll Candidates Biometrics"  
+                                        Style="{StaticResource MButtonStyle}" 
+                                        Width="220" 
+                                        VerticalContentAlignment="Center"
+                                        HorizontalContentAlignment="Left"
+                                        Content="Enroll Fingers"/>
+
+
+
+                                    <Button Name="btnEnrollStatistics"  
+                                        ToolTip="Click to View Enrolled Statistics"  
+                                        Style="{StaticResource MButtonStyle}" 
+                                        Width="220" 
+                                        VerticalContentAlignment="Center"
+                                        HorizontalContentAlignment="Left"
+                                        Content="Enrolled Statistics"/>
+
+
+                                </StackPanel>
+                            </ScrollViewer>
+                        </layoutToolkit:AccordionItem>
+                        <layoutToolkit:AccordionItem Header="SYSTEM OPTIONS" 
+                                                     BorderBrush="#27ae60"
+                                                     FontWeight="Bold" 
+                                                     FontSize="16" 
+                                                     Width="222" 
+                                                     Margin="0,0" 
+                                                     Background="#27ae60"  
+                                                     Cursor="Hand">
+                            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                                <StackPanel Orientation="Vertical" 
+                                            HorizontalAlignment="Stretch">
+                                    <Button Name="btnBrowseExportFolder"  
+                                            ToolTip="Click to Browse Export Files"  
+                                            Style="{StaticResource MButtonStyle}" 
+                                            Width="220" 
+                                            Click="btnBrowseExportFolder_Click"
+                                            VerticalContentAlignment="Center"
+                                            HorizontalContentAlignment="Left"
+                                            Content="Browse Export Files"/>
+                                </StackPanel>
+                            </ScrollViewer>
+                        </layoutToolkit:AccordionItem>
+                    </layoutToolkit:Accordion>
+                </Grid>
+
+                <Grid Grid.Row="1"
+                      Margin="5">
+                    <TextBlock Name="MessageTitle" Text="24/7 Support Lines: 08069232760, 08052218069, 08052218070" 
+                           TextAlignment="Justify" Grid.Row="1" TextWrapping="Wrap"
+                           FontWeight="Bold" TextTrimming="CharacterEllipsis" 
+                            LineHeight="16" FontSize="12" Foreground="#fff"/>
+                </Grid>
+            </Grid>
+            
+        </Border>
+
+            <!-- Main Contents -->
+        <Grid Margin="0,3" Grid.Row="2" Grid.Column="1" Name="contentGrid" >
+            
+        </Grid>
+        <!--Footer-->
+        
+        <Border CornerRadius="0,0,10,10" 
+                Grid.Row="4" 
+                Grid.ColumnSpan="2" 
+                BorderThickness="3,3,3,1" 
+                BorderBrush="#0A2A1B" >
+           
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                    <GradientStop Color="#088A4B" Offset="1" />
+                    <GradientStop Color="#0A2A1B" Offset="0" />
+                </LinearGradientBrush>
+            </Border.Background>
+            <Grid Margin="0,1,8,1">
+                <StatusBar DockPanel.Dock="Bottom"
+                           Background="Transparent">
+                    <StatusBar.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                            </Grid>
+                        </ItemsPanelTemplate>
+                    </StatusBar.ItemsPanel>
+                    <StatusBarItem Grid.Column="0"
+                               Margin="10,0,0,0">
+                        
+                            <TextBlock Margin="0,1,1,5"  Name="txtSensorStatus" Text="Connect Device" 
+                           TextAlignment="Right" Grid.Column="0"
+                           FontWeight="Bold" TextTrimming="CharacterEllipsis" 
+                            LineHeight="18" FontSize="13" VerticalAlignment="Center" Foreground="#01DFA5"/>
+                       
+                        
+                    </StatusBarItem>
+                    <Separator Grid.Column="1" />
+                    <StatusBarItem Grid.Column="2">
+                        <TextBlock Margin="5,1,5,1"  
+                                   Name="txtNumberofCandidates" 
+                                   Text="No of Candidates: 0000" 
+                                   TextAlignment="Right" 
+                                   FontWeight="Bold" 
+                                   TextTrimming="CharacterEllipsis" 
+                                   LineHeight="18" 
+                                   FontSize="13" 
+                                   VerticalAlignment="Center" 
+                                   Foreground="#01DFA5"/>
+                    </StatusBarItem>
+                    <Separator Grid.Column="3" />
+                    <StatusBarItem Grid.Column="4" 
+                                   HorizontalContentAlignment="Right">
+                        <TextBlock Text="Please Note! Your registration is not complete until you have exported and uploaded your registration data to  NECO website [www.mynecoexams.com/ssce]" 
+                                    TextAlignment="Right" 
+                                    FontWeight="Bold" 
+                                    TextTrimming="CharacterEllipsis" 
+                                    LineHeight="18" 
+                                   FontSize="13" 
+                                   VerticalAlignment="Center" 
+                                   Foreground="#01DFA5"/>
+                    </StatusBarItem>
+                </StatusBar>
+            </Grid>
+        </Border>
+    </Grid>
+</Window>

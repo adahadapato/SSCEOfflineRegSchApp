@@ -1,0 +1,264 @@
+﻿<UserControl x:Class="SSCEOfflineRegSchApp.Pages.CandidateProfilePage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SSCEOfflineRegSchApp.Pages"
+             Background="Transparent"
+             Loaded="UserControl_Loaded"
+             Height="450" 
+             Width="700">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/SSCEOfflineRegSchApp;component/Resources/ButtonStyle.xaml" />
+                <ResourceDictionary Source="/SSCEOfflineRegSchApp;component/Resources/FancyCheckBoxStyle.xaml" />
+                <ResourceDictionary Source="/SSCEOfflineRegSchApp;component/Resources/FancyTextBoxStyle.xaml" />
+                <ResourceDictionary Source="/SSCEOfflineRegSchApp;component/Resources/FancyListViewStyle.xaml" />
+                <ResourceDictionary Source="/SSCEOfflineRegSchApp;component/Resources/ToolTipStyle.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.Effect>
+            <DropShadowEffect ShadowDepth="2"/>
+        </Grid.Effect>
+        <Grid.Background>
+            <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                <GradientStop Color="#088A4B" Offset="0" />
+                <GradientStop Color="#088A4B" Offset="1" />
+            </LinearGradientBrush>
+        </Grid.Background>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+
+        <!--Page Title Section -->
+        <Grid Grid.Row="0"  
+              Margin="0,0,3,0">
+            <Grid.Background>
+                <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                    <GradientStop Color="#088A4B" Offset="0"/>
+                    <GradientStop Color="#0A2A1B" Offset="1"/>
+                </LinearGradientBrush>
+            </Grid.Background>
+            <TextBlock Margin="5,1,0,1" Name="MessageTitle" 
+                       Text="CANDIDATE PROFILE" 
+                       TextAlignment="Center" 
+                       FontWeight="Bold" 
+                       TextTrimming="CharacterEllipsis" 
+                    LineHeight="22" 
+                       FontSize="18" 
+                       VerticalAlignment="Center" 
+                       Foreground="#01DFA5"/>
+        </Grid>
+
+
+        <!--Page Content Section -->
+        <Grid Grid.Row="1"   Margin="2">
+            <Border Name="brdSiteLogo" 
+                    BorderThickness="2"
+                    BorderBrush="#3C3B3B"
+                    VerticalAlignment="Top"
+                    HorizontalAlignment="Left"
+                    Margin="526,22,0,0"
+                    Height="165" 
+                    Width="148">
+                <Image Name="CamImageBox"    
+                       HorizontalAlignment="Stretch" 
+                       VerticalAlignment="Stretch" 
+                       Stretch="Fill"/>
+            </Border>
+
+            <Label Name="lblSerialNumber"
+                   Content="Serial Number"
+                   FontSize="20"
+                   FontWeight="Bold"
+                   FontStyle="Italic"
+                   HorizontalContentAlignment="Left"
+                   Margin="35,10,549,309"/>
+
+
+            <TextBlock Name="txtCompleted"
+                       Background="Red"
+                       Foreground="#fff"
+                       FontWeight="Bold"
+                       Text="Biometrics Pending" 
+                       TextWrapping="Wrap"
+                       TextAlignment="Center"
+                       Margin="18,48,539,285"/>
+
+            <TextBlock Name="txtStatus"
+                       Background="Red"
+                       Foreground="#fff"
+                       FontWeight="Bold"
+                       Text="Pending Upload" 
+                       TextWrapping="Wrap"
+                       TextAlignment="Center"
+                       Margin="18,75,539,258"/>
+
+
+            <Label Content="Candidate Name:"
+                   HorizontalContentAlignment="Right"
+                   Margin="163,17,419,309"/>
+
+            <Label Name="lblcand_name"
+                   Content="Candidate Name"
+                   FontSize="13"
+                   FontWeight="Bold"
+                   FontStyle="Italic"
+                   HorizontalContentAlignment="Left"
+                   Margin="281,17,184,309"/>
+
+            <Label Content="Sex:"
+                   HorizontalContentAlignment="Right"
+                   Margin="163,41,419,285"/>
+
+            <Label Name="lblSex"
+                   Content="Sex"
+                   FontSize="13"
+                   FontWeight="Bold"
+                   FontStyle="Italic"
+                   HorizontalContentAlignment="Left"
+                   Margin="281,41,346,285"/>
+
+            <Label Content="Disability:"
+                   HorizontalContentAlignment="Right"
+                   Margin="163,99,419,227"/>
+
+            <Label Name="lblDisability"
+                   Content="Disability"
+                   FontSize="13"
+                   FontWeight="Bold"
+                   FontStyle="Italic"
+                   HorizontalContentAlignment="Left"
+                   Margin="281,99,250,227"/>
+
+            <Label Content="Date of Birth:"
+                   HorizontalContentAlignment="Right"
+                   Margin="189,68,419,258"/>
+
+            <Label Name="lbld_of_b"
+                   Content="DateOfBirth"
+                   FontSize="13"
+                   FontWeight="Bold"
+                   FontStyle="Italic"
+                   HorizontalContentAlignment="Left"
+                   Margin="281,68,319,258"/>
+
+            <Label Content="State of Origin:"
+                   HorizontalContentAlignment="Right"
+                   Margin="163,130,419,196"/>
+
+            <Label Name="lblStateofOrigin"
+                   Content="State of Origin"
+                   FontSize="13"
+                   FontWeight="Bold"
+                   FontStyle="Italic"
+                   HorizontalContentAlignment="Left"
+                   Margin="281,130,170,196"/>
+
+            <Label Content="Local Government Area:"
+                   HorizontalContentAlignment="Right"
+                   Margin="110,159,419,167"/>
+
+            <Label Name="lblLocalGoverment"
+                   Content="Local Goverment Area"
+                   FontSize="13"
+                   FontWeight="Bold"
+                   FontStyle="Italic"
+                   HorizontalContentAlignment="Left"
+                   Margin="281,159,170,167"/>
+
+            <!--<Separator  />-->
+            <!-- A separator between settings and buttons. -->
+            <Line StrokeThickness="2" 
+                  SnapsToDevicePixels="True"
+                  Stroke="#0A2A1B"
+                  Stretch="Fill"
+                  X1="100" 
+                  Y1="0" 
+                  X2="100" 
+                  Y2="100" Margin="-68,-6,68,164" />
+
+            <Line StrokeThickness="2" 
+                  SnapsToDevicePixels="True"
+                  Stroke="#0A2A1B"
+                  Stretch="Fill"
+                  X1="0" 
+                  Y1="100" 
+                  X2="100" 
+                  Y2="100" Margin="0,91,0,67" />
+
+
+
+        </Grid>
+
+        <!--Buttons Section -->
+        <Grid Grid.Row="4"   
+              Margin="0,0,5,0" 
+              Background="#088A4B">
+            <StackPanel Orientation="Horizontal" 
+                        HorizontalAlignment="Right">
+
+                <Button x:Name="btnBiometrics" 
+                        Content="Biometrics" 
+                        Margin="3,0,3,8" 
+                        MinWidth="50" 
+                        Height="42"  
+                        Click="btnBiometrics_Click" 
+                        FontSize="18" 
+                        Style="{StaticResource ROButtonStyle}"     
+                        VerticalAlignment="Center" 
+                        HorizontalAlignment="Stretch"  
+                        VerticalContentAlignment="Center" 
+                        HorizontalContentAlignment="Center" 
+                        Width="135" />
+
+                <Button x:Name="btnEdit" 
+                        Content="Edit Record" 
+                        Margin="3,0,3,8" 
+                        MinWidth="50" 
+                        Height="42"  
+                        Click="btnEdit_Click" 
+                        FontSize="18" 
+                        Style="{StaticResource ROButtonStyle}"     
+                        VerticalAlignment="Center" 
+                        HorizontalAlignment="Stretch"  
+                        VerticalContentAlignment="Center" 
+                        HorizontalContentAlignment="Center" 
+                        Width="135" />
+
+                <Button x:Name="btnUpload" 
+                        Content="Upload" 
+                        Margin="3,0,3,8" 
+                        MinWidth="50" 
+                        Height="42"  
+                        Click="btnUpload_Click" 
+                        FontSize="18" 
+                        Style="{StaticResource ROButtonStyle}"     
+                        VerticalAlignment="Center" 
+                        HorizontalAlignment="Stretch"  
+                        VerticalContentAlignment="Center" 
+                        HorizontalContentAlignment="Center" 
+                        Width="135" />
+
+                <Button x:Name="btnClose" 
+                        Content="Close" 
+                        Margin="3,0,3,8" 
+                        MinWidth="50" 
+                        Height="42"  
+                        Click="btnClose_Click" 
+                        FontSize="18" 
+                        Style="{StaticResource RCButtonStyle}"     
+                        VerticalAlignment="Center" 
+                        HorizontalAlignment="Stretch"  
+                        VerticalContentAlignment="Center" 
+                        HorizontalContentAlignment="Center" 
+                        Width="113" />
+            </StackPanel>
+        </Grid>
+    </Grid>
+</UserControl>

@@ -1,0 +1,62 @@
+<ResourceDictionary 
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+   >
+
+
+    <Style x:Key="LongActionDialogue" TargetType="{x:Type Grid}">
+
+        <Setter Property="Background" >
+            <Setter.Value>
+                <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                    <GradientStop Color="#088A4B" Offset="0"/>
+                    <GradientStop Color="#0A2A1B" Offset="0.5"/>
+                    <GradientStop Color="#0A2A1B" Offset="1"/>
+                </LinearGradientBrush>
+            </Setter.Value>
+        </Setter>
+
+    </Style>
+
+    <Style x:Key="HeaderGrid" TargetType="{x:Type Grid}">
+        
+        <Setter Property="Background" >
+            <Setter.Value>
+                <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                    <GradientStop Color="#7d3d85" Offset="0"/>
+                    <GradientStop Color="#7d3d85" Offset="0.5"/>
+                    <GradientStop Color="#7d3d85" Offset="1"/>
+                </LinearGradientBrush>
+            </Setter.Value>
+        </Setter>
+
+    </Style>
+    <Style x:Key="ContentGrid" TargetType="{x:Type Grid}">
+        <Setter Property="Background" Value="#ffffff" />
+        
+        <!--<Setter Property="Background" >
+              <Setter.Value>
+                <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                    <GradientStop Color="#5412a5" Offset="0"/>
+                    <GradientStop Color="#4913b5" Offset="0.5"/>
+                    <GradientStop Color="#5212a5" Offset="1"/>
+                </LinearGradientBrush>
+            </Setter.Value>
+        </Setter>-->
+
+    </Style>
+    <Style x:Key="MainGrid" TargetType="{x:Type Grid}">
+        <Setter Property="Background" Value="#fff" />
+        
+        <!--<Setter Property="Background" >
+            <Setter.Value>
+                <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                    <GradientStop Color="#5412a5" Offset="0"/>
+                    <GradientStop Color="#4913b5" Offset="0.5"/>
+                    <GradientStop Color="#5212a5" Offset="1"/>
+                </LinearGradientBrush>
+            </Setter.Value>
+        </Setter>-->
+
+    </Style>
+</ResourceDictionary>
